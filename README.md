@@ -13,7 +13,7 @@
 
 2. 复制该网页body块内容，新建一个文件，将复制内容以 HTML 文件形式存储。 📋
 
-![step2](https://gitee.com/hearotop/note/raw/master/assert/1.png)
+![step2](https://gitee.com/hearotop/note/raw/master/assert/2.png)
 
 3. 更改 `<mcfile name="all.py" path="d:/markdown/all.py"></mcfile>` 程序中的文件路径，指向你保存的 HTML 文件。 📁
 4. 建议在 VSCode 中运行此程序，确保你已配置好 Python 环境，并安装 Office Viewer 拓展，这样能增强使用体验。运行 `<mcfile name="all.py" path="d:/markdown/all.py"></mcfile>` 程序，即可生成 MD 文件。 🚀
