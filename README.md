@@ -17,6 +17,7 @@
 
 3. 更改 `<mcfile name="all.py" path="d:/markdown/all.py"></mcfile>` 程序中的文件路径，指向你保存的 HTML 文件。 📁
 4. 建议在 VSCode 中运行此程序，确保你已配置好 Python 环境，并安装 Office Viewer 拓展，这样能增强使用体验。运行 `<mcfile name="all.py" path="d:/markdown/all.py"></mcfile>` 程序，即可生成 MD 文件。 🚀
+5. 如果需要将相应的md文件打印或者转为PDF，可以参考文章[在VS Code中渲染 Markdown 并保存为 PDF](https://zhuanlan.zhihu.com/p/21306121521)中的方法二
 
 祝你使用愉快，轻松整理题目！ 😊
 
