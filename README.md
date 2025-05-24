@@ -8,13 +8,13 @@
 
 1. 在你的答题界面，打开浏览器的开发者模式。 🔍
 <div style="display: flex; gap: 10px; margin-top: 20px;">
-    <img src="https://gitee.com/hearotop/note/raw/master/assert/1.png" alt="step1" style="width: 1920px; height: 1080px; border-radius: 10px;">
+    <img src="https://gitee.com/hearotop/note/raw/master/assert/1.png" alt="step1" style="width: 800px; height: 500px; border-radius: 10px;">
   
 </div>
 
 2. 复制该网页body块内容，新建一个文件，将复制内容以 HTML 文件形式存储。 📋
 <div style="display: flex; gap: 10px; margin-top: 20px;">
-    <img src="https://gitee.com/hearotop/note/raw/master/assert/2.png" alt="step2" style="width: 1920px; height: 1080px; border-radius: 10px;">
+    <img src="https://gitee.com/hearotop/note/raw/master/assert/2.png" alt="step2" style="width: 800px; height: 500px; border-radius: 10px;">
   
 </div>
 3. 更改 `<mcfile name="all.py" path="d:/markdown/all.py"></mcfile>` 程序中的文件路径，指向你保存的 HTML 文件。 📁
