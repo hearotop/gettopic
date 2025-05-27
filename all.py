@@ -14,20 +14,21 @@ def create_resource_folder(folder_path):
 
 # 处理题目类型块
 def process_question_type_blocks(soup):
-    output_content = ''
+    output_content = 'Author: hearo Eamil : hearotop@outlook.com\n'
     question_type_blocks = soup.find_all('div', class_=['mark_item ans-cc', 'mark_item'])
     for block in question_type_blocks:
         question_type = block.find('h2', class_='type_tit').get_text(strip=True)
         output_content += f'{question_type}\n\n'
         questions = block.find_all(['h3', 'div'], class_=['mark_name colorDeep', 'essay_question'])
         if questions:
-            question_number = 1
+            #question_number = 1
             for question in questions:
-                output_content += f'{question_number}. '
-                question_number += 1
+                #output_content += f'{question_number}. '
+               # question_number += 1
                 if question.name == 'h3':
-                    question_text_elem = question.find('span', class_='qtContent')
-                    question_text = question_text_elem.get_text(strip=True) if question_text_elem else "无题目内容"
+                    #question_text_elem = question.find('span', class_='qtContent')
+                    #question_text = question_text_elem.get_text(strip=True) if question_text_elem else ""
+                    question_text = question.get_text(strip=True)
                 elif question_type == '简答题':
                     question_elements = [span for element in soup.find_all('span', class_='qtContent') for span in element.find_all('span')]
                     answer_elements = soup.find_all('dd', class_='rightAnswerContent')
@@ -38,16 +39,16 @@ def process_question_type_blocks(soup):
                             answer_text = ''.join([p.get_text(strip=True) for p in a.find_all('p')]).strip()
                             output_content += f'{answer_text}\n\n'
                     else:
-                        output_content += "简答题无题目或答案\n\n"
+                        output_content += "\n\n"
                 else:
-                    question_text = "无题目内容"
+                    question_text = ""
                 output_content += f'{question_text}\n'
                 images = question.find_all('img')
                 for img in images:
                     img_url = img.get('src')
                     if img_url:
                         output_content += f'![{img_url}]({img_url})\n'
-                question_details = question.find_next_sibling('ul', class_='mark_letter colorDeep qtDetail')
+                question_details = question.find_next_sibling('ul', class_='mark_letter colorDeep qtDetail')or question.find_next('ul', class_='mark_letter colorDeep')
                 if question_details:
                     for detail in question_details.find_all('li'):
                         output_content += f'{detail.get_text(strip=True)}\n'
@@ -59,19 +60,20 @@ def process_question_type_blocks(soup):
                 if question_type != '简答题':
                     correct_answer_block = question.find_next('div', class_='mark_answer')
                     if correct_answer_block:
-                        correct_answer_elem = correct_answer_block.find('span', class_='rightAnswerContent') or correct_answer_block.find('dd', class_='rightAnswerContent')
+                        correct_answer_elem = correct_answer_block.find('span', class_='rightAnswerContent') or correct_answer_block.find('dd', class_='rightAnswerContent') or correct_answer_block.find('span', class_='colorGreen marginRight40 fl')
                         if correct_answer_elem:
                             correct_answer = correct_answer_elem.get_text(strip=True)
                             output_content += f'正确答案: {correct_answer}'
+                            #output_content += f'{correct_answer}\n'
                         else:
-                            output_content += "无正确答案"
+                            output_content += ""
                         answer_images = correct_answer_block.find_all('img')
                         for img in answer_images:
                             img_url = img.get('src')
                             if img_url:
                                 output_content += f'![{img_url}]({img_url})'
                     else:
-                        output_content += "无正确答案块"
+                        output_content += ""
                 output_content += '\n\n'
         else:
             output_content += f'{question_type} 无题目\n\n'
@@ -83,7 +85,7 @@ def write_to_markdown(file_path, content):
         file.write(content)
 
 if __name__ == '__main__':
-    html_file_path = 'd:/markdown/test.html'
+    html_file_path = 'd:/markdown/login.html'
     html_content = read_html_file(html_file_path)
     soup = BeautifulSoup(html_content, 'html.parser')
     resource_folder = 'd:/markdown/resource'
